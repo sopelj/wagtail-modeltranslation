@@ -14,7 +14,6 @@
     display: none;
 }
 
-header select.language-picker {
+header .language-picker select {
     width: auto;
-    padding: 10px;
 }
