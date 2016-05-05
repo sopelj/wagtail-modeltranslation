@@ -4,9 +4,9 @@
 {% get_available_languages as LANGUAGES %}
 
 <div class="language-picker" style="display: none">
-    {% trans 'Show fields in' %}
+    {% trans 'Field Language' %}
     <select class="status-tag primary">
-        <option value="all">{% trans 'All languages' %}</option>
+        <option value="all">{% trans 'All' %}</option>
         {% for language_code, language_name in LANGUAGES %}
         <option value="{{ language_code }}"{% if language_code == CURRENT_LANGUAGE_CODE %} selected="selected"{% endif %}>{{ language_name }}</option>
         {% endfor %}
