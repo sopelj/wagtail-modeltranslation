@@ -26,7 +26,8 @@ setup(
     package_data={'wagtail_modeltranslation': [
         'static/modeltranslation/css/*.css',
         'static/modeltranslation/js/*.js',
-        'static/modeltranslation/templates/*.html',
+        'static/modeltranslation/templates/wagtailadmin/edit_handlers/*.html',
+        'static/modeltranslation/templates/wagtailadmin/pages/*.html',
     ]},
     requires=['django(>=1.7)', 'wagtail(>=1.0)', 'django_overextends(>=0.4)'],
     download_url='https://github.com/infoportugal/wagtail-modeltranslation/archive/v0.2.3.tar.gz',
