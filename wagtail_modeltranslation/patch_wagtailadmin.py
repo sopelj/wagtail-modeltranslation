@@ -199,7 +199,8 @@ class WagtailTranslator(object):
         translated_fieldpanels = []
         if fieldpanel.field_name in tr_fields:
             for lang in settings.LANGUAGES:
-                classes = fieldpanel.classname
+                classes = fieldpanel.classname.split() if fieldpanel.classname else []
+                classes += ['translation-field', 'lang-' + lang[0]]
 
                 if cls._is_orig_required(fieldpanel.field_name) and (lang[0] == settings.LANGUAGE_CODE):
                     if (build_localized_fieldname(fieldpanel.field_name, lang[0]) not in
@@ -209,7 +210,7 @@ class WagtailTranslator(object):
 
                 translated_field_name = build_localized_fieldname(fieldpanel.field_name, lang[0])
                 translated_fieldpanels.append(
-                    FieldPanel(translated_field_name, classname=classes, widget=fieldpanel.widget)
+                    FieldPanel(translated_field_name, classname=' '.join(classes), widget=fieldpanel.widget)
                 )
 
         else:

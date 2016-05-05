@@ -1,0 +1,49 @@
+{% overextends "wagtailadmin/pages/edit.html" %}
+{% load i18n %}
+
+{% block content %}
+    {% get_current_language as CURRENT_LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    <select class="language-picker" style="display: none">
+        {% for language_code, language_name in LANGUAGES %}
+        <option value="{{ lang_code }}"{% if language_code == CURRENT_LANGUAGE_CODE %} selected="selected"{% endif %}>{{ language_name }}</option>
+        {% endfor %}
+    </select>
+    {{ block.super }}
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .tab-content.hidden {
+        display: none;
+    }
+
+    header select.language-picker {
+        width: auto;
+        padding: 10px;
+    }
+</style>
+{{ block.super }}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(function() {
+        var $fields = $('ul.objects');
+        var $translationFields = $fields.find('li.translation-field');
+        if ($translationFields.length > 0) {
+            var $languagePicker = $('select.language-picker');
+            $('header .row .col3').append($languagePicker);
+            $languagePicker.show();
+            $translationFields.not('.lang-' + $languagePicker.val()).hide();
+
+            $languagePicker.on('change', function(e) {
+                $translationFields.hide();
+                $fields.find('li.translation-field.lang-' + $(this).val()).show();
+            });
+        }
+        $('.tab-content.hidden').removeClass('hidden');
+    });
+</script>
+{{ block.super }}
+{% endblock %}
