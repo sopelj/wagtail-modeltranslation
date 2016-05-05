@@ -109,7 +109,8 @@ def streamfields_translation_copy():
 
     return js_includes
 
-@hooks.register('insert_global_admin_js')
+
+@hooks.register('insert_editor_js')
 def add_language_picker_js():
     """
     Includes script in editor html file that controls the
@@ -119,12 +120,12 @@ def add_language_picker_js():
 
     # includes the javascript file in the html file
     js_files = [
-        'modeltranslation/js/wagatail_language_picker.js',
+        'modeltranslation/js/wagtail_language_picker.js',
     ]
 
     js_includes = format_html_join('\n', '<script src="{0}{1}"></script>', (
         (settings.STATIC_URL, filename) for filename in js_files)
-                                   )
+    )
 
     return js_includes
 
