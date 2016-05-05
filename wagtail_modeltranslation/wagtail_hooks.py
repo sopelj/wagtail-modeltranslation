@@ -109,6 +109,26 @@ def streamfields_translation_copy():
 
     return js_includes
 
+@hooks.register('insert_global_admin_js')
+def add_language_picker_js():
+    """
+    Includes script in editor html file that controls the
+    language picker, which allows you to show and hide fields
+    which belong to a specific language in the editor interface
+    """
+
+    # includes the javascript file in the html file
+    js_files = [
+        'modeltranslation/js/wagatail_language_picker.js',
+    ]
+
+    js_includes = format_html_join('\n', '<script src="{0}{1}"></script>', (
+        (settings.STATIC_URL, filename) for filename in js_files)
+                                   )
+
+    return js_includes
+
+
 
 @hooks.register('insert_editor_css')
 def modeltranslation_page_editor_css():

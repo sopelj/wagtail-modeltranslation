@@ -1,0 +1,10 @@
+{% load i18n %}
+
+{% get_current_language as CURRENT_LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+
+<select class="language-picker" style="display: none">
+    {% for language_code, language_name in LANGUAGES %}
+    <option value="{{ language_code }}"{% if language_code == CURRENT_LANGUAGE_CODE %} selected="selected"{% endif %}>{{ language_name }}</option>
+    {% endfor %}
+</select>
