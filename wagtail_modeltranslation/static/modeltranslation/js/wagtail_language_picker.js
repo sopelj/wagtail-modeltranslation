@@ -26,6 +26,7 @@ $(function() {
                 $translationFields.show();
             } else {
                 $translationFields.hide();
+                $fields.find('li.translation-field').not('.lang-' + langCode).hide();
                 $fields.find('li.translation-field.lang-' + langCode).show();
             }
         });
