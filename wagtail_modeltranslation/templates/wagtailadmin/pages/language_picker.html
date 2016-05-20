@@ -1,14 +1,13 @@
 {% load i18n %}
 
-{% get_current_language as CURRENT_LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 
 <div class="language-picker" style="display: none">
     {% trans 'Field Language' %}
     <select class="status-tag primary">
-        <option value="all">{% trans 'All' %}</option>
+        <option value="all" selected="selected">{% trans 'All' %}</option>
         {% for language_code, language_name in LANGUAGES %}
-        <option value="{{ language_code }}"{% if language_code == CURRENT_LANGUAGE_CODE %} selected="selected"{% endif %}>{{ language_name }}</option>
+        <option value="{{ language_code }}">{{ language_name }}</option>
         {% endfor %}
     </select>
 </div>
