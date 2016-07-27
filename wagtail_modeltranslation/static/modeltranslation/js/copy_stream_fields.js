@@ -22,7 +22,7 @@ $(document).ready(function(){
 			if (fieldLang != langs[j]) {
 				var currentFieldID = fieldName + '_' + fieldLang;
 				var targetFieldID = fieldName + '_' + langs [j];
-				$(header).children('.translation-field-copy-wrapper')[0].innerHTML += '<button class="translation-field-copy" current-lang-code="'+ currentFieldID +'" data-lang-code="'+ targetFieldID +'">'+langs[j]+'</button>';
+				$(header).children('.translation-field-copy-wrapper')[0].innerHTML += '<button class="translation-field-copy button" current-lang-code="'+ currentFieldID +'" data-lang-code="'+ targetFieldID +'">'+langs[j]+'</button>';
 			};
 		};
 	};
